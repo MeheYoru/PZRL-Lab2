@@ -75,16 +75,24 @@ void extractRegex(char* input, char** output1, char** output2, int type) {
 }
 
 void addFront(char** file, int size, char* output1, char* output2) {
-  for(int i = 0; i < size; i++) {
-    file[i] = realloc(file[i], (2048+strlen(output2))*sizeof(char));
-    memmove(file[i]+strlen(output2), file[i], 2048*sizeof(char));
-    memmove(file[i], output2, strlen(output2));
-  }
-  return;
+    for(int i = 0; i < size; i++) {
+      if((i > 0)) {
+        if(strchr(file[i-1], '\n') == NULL) {
+          continue;
+        }
+      }
+      file[i] = realloc(file[i], (2048+strlen(output2))*sizeof(char));
+      memmove(file[i]+strlen(output2), file[i], 2048*sizeof(char));
+      memmove(file[i], output2, strlen(output2));
+    }
+    return;
 }
 void addEnd(char** file, int size, char* output1, char* output2) {
   strcat(output2, "\n");
   for(int i = 0; i < size; i++) {
+    if(strchr(file[i], '\n') == NULL) {
+      continue;
+    }
     file[i] = realloc(file[i], (2048+strlen(output2))*sizeof(char));
     memcpy(file[i]+strlen(file[i])-1, output2, strlen(output2));
   }

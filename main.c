@@ -41,5 +41,9 @@ int main(int argc, char** argv) {
     delText(inputText, size, input1, input2);
   }
   writeFile(inputText, argv[1], size);
+  for(int i = 0; i < size; i++) {
+    free(inputText[i]);
+  }
+  free(inputText);
   return 0;
 }
