@@ -30,7 +30,7 @@ void doSwap(char** file, const int size, char* old_text, char* new_text) {
     char* temp;
     temp = strstr(file[i], old_text);
     while(temp) {
-      file[i] = realloc(file[i], 3000*sizeof(char));
+      file[i] = realloc(file[i], (4096)*sizeof(char));
       temp = strstr(file[i], old_text);
       memmove(temp+strlen(new_text), temp+strlen(old_text), 2048-strlen(old_text));
       memmove(temp, new_text, strlen(new_text));

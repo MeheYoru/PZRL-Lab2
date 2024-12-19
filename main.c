@@ -17,8 +17,8 @@ int main(int argc, char** argv) {
   if(!inputText) {
     return 1;
   }
-  if(command == "s///") {
-    return 0;
+  if(command[1] == command[2]) {
+    return 1;
   }
   char* input1 = "in1";
   char* input2 = "in2";
