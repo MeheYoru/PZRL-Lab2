@@ -1,4 +1,4 @@
-OBJS	= output/main.o output/lab2.o output/lab2
+OBJS	= output/main.o output/lab2.o
 SOURCE	= main.c lab2.c
 HEADER	= lab2.h
 OUT	= output/lab2
@@ -12,7 +12,7 @@ output/lab2: $(OBJS)
 	$(CC) -o $@ $^
 
 output/%.o: %.c $(HEADER)
-	$(CC) $(FLAGS) -c -o $@ $<
+	$(CC) $(FLAGS) -o $@ $<
 	 
 clean:
 	rm -f $(OBJS) $(OUT)
